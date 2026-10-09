@@ -1,5 +1,5 @@
 ventas=[100,200,75]
-print([0])
+print(ventas[0])
 ventas.append(300)
 print(ventas)
 
@@ -25,12 +25,15 @@ print("Estas son las ventas", total(ventas))
 #ventas=[100,200,75,300]
 
 def promedio(v):
-  lonVentas=len(v)
-  res=0
-  for ventas in v:
-    res=res+ventas
 
-  return res/lonVentas
+  if v!=0:
+    lonVentas=len(v)
+    res=0
+    for ventas in v:
+      res=res+ventas
+    return res/lonVentas
+  else:
+    return "Va a largar error"
 
 
 print(promedio(ventas))

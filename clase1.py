@@ -33,7 +33,7 @@ def promedio(v):
       res=res+ventas
     return res/lonVentas
   else:
-    return 0
+    return ValueError("Lista vacia")
 
 
 print(promedio(ventas))

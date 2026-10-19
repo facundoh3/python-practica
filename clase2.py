@@ -6,5 +6,5 @@ clientes=[
 
 cliente=max(clientes, key=lambda c: c["Monto"])
 print("El cliente que mas gasto fue ",cliente.get("nombre"))
-nombreOrdenado=sorted(clientes, key=lambda n: n["nombre"], reverse=True)
-print(nombreOrdenado)
+montoOrdenado=sorted(clientes, key=lambda n: n["Monto"], reverse=True)
+print(montoOrdenado)

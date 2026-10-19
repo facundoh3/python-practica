@@ -52,10 +52,10 @@ def cliente_top(c):
       mayor=c[0]
       for cliente in c:
         if cliente["Monto"] >= mayor["Monto"]:
-          mayor["Monto"]=cliente["Monto"]
+          mayor=cliente
           #nombre=cliente["nombre"]
       print("El mayor monto es ", mayor["Monto"], "Y el nombre es:", mayor["nombre"])
-      return mayor
+      return mayor["nombre"]
   else:
     raise ValueError("El array esta vacio")
 

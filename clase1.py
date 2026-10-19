@@ -45,14 +45,18 @@ clientes=[
   { "nombre":"Robert", "Monto":342 },
   { "nombre":"Ana", "Monto":150 }
 ]
+print(clientes)
 
 def cliente_top(c):
-  mayor=c[0].get("Monto")
-  for monto in c:
-    if monto["Monto"] > mayor:
-      mayor=monto["Monto"]
-      nombre=monto["nombre"]
-  print("El mayor monto es ", mayor, "Y el nombre es:", nombre)
-  return mayor
+  if len(c) != 0:
+      mayor=c[0]
+      for cliente in c:
+        if cliente["Monto"] >= mayor["Monto"]:
+          mayor["Monto"]=cliente["Monto"]
+          #nombre=cliente["nombre"]
+      print("El mayor monto es ", mayor["Monto"], "Y el nombre es:", mayor["nombre"])
+      return mayor
+  else:
+    raise ValueError("El array esta vacio")
 
 cliente_top(clientes)

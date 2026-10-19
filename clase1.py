@@ -26,14 +26,14 @@ print("Estas son las ventas", total(ventas))
 
 def promedio(v):
 
-  if len(v) == 0:  #len(v)==0
+  if len(v) != 0:  #len(v)==0
     lonVentas=len(v)
     res=0
     for ventas in v:
       res=res+ventas
     return res/lonVentas
   else:
-    return ValueError("Lista vacia")
+    raise ValueError("Lista vacia")
 
 
 print(promedio(ventas))

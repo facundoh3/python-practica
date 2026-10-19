@@ -37,3 +37,22 @@ def promedio(v):
 
 
 print(promedio(ventas))
+
+#----------------------Resto de clase 1-----------------
+
+clientes=[
+  { "nombre":"Beto", "Monto":250 },
+  { "nombre":"Robert", "Monto":342 },
+  { "nombre":"Ana", "Monto":150 }
+]
+
+def cliente_top(c):
+  mayor=c[0].get("Monto")
+  for monto in c:
+    if monto["Monto"] > mayor:
+      mayor=monto["Monto"]
+      nombre=monto["nombre"]
+  print("El mayor monto es ", mayor, "Y el nombre es:", nombre)
+  return mayor
+
+cliente_top(clientes)

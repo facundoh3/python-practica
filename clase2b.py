@@ -6,6 +6,8 @@ registros = [
 ]
 
 timeAsist=[r["TiemAsist"] for r in registros]
-finSemana=[r["Calendario"] for r in registros if r["Calendario"] in ("SÁBADO","DOMINGO") ]
+finSemana=[r for r in registros if r["Calendario"] in ("SÁBADO","DOMINGO") ]
 horasExtras=[r["Nombre"] for r in registros if r["OT"] > 0]
 totalHoras=sum([r["TiemAsist"] for r in registros])
+
+print(finSemana)

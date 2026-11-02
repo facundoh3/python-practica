@@ -15,11 +15,13 @@ etiqueta=("TRABAJO", "FALTA", "SALTEAR")
 
 for i,f in archivo.head(15).iterrows():
   finde=f["Calendario"] in dias # Si es sabado o domingo
+  dias_semana=f["Calendario"] not in dias
+  #print(dias_semana)
   no_marcacion=pd.isna(f["Marc-Ent"]) # si el marc-ent
 
   if finde and no_marcacion:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[2])
-  elif f["Calendario"] and no_marcacion:
+  elif f["Calendario"] and dias_semana:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[1])
   else:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[0])

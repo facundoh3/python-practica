@@ -29,8 +29,12 @@ for i,f in archivo.head(30).iterrows():
 
   clave=(f["Nombre"],f["Nº"])
 
-  empleados["Nombre"].append(clave[0])
-  empleados["Num-emp"].append(clave[1])
+  if clave[0] is not empleados["Nombre"]:
+    empleados["Nombre"].append(clave[0])
+    empleados["Num-emp"].append(clave[1])
+  else:
+    print("ya esta repetido")
+
 
   if es_finde and no_marcacion:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[2])

@@ -8,7 +8,7 @@ archivo=pd.read_excel("Registro_Horario.xls", engine="calamine")
 # print()
 # print("linea seleccionada", archivo.iloc[865])
 
-finde=("SÁBADO", "DOMINGO")
+DIAS_FINDE=("SÁBADO", "DOMINGO")
 etiqueta=("TRABAJO", "FALTA", "SALTEAR")
 def normalizador(cadena):
   resultado=cadena.strip().upper()
@@ -16,11 +16,11 @@ def normalizador(cadena):
 
 for i,f in archivo.head(30).iterrows():
   dia=normalizador(f["Calendario"])
-  findes=dia in finde # Si es sabado o domingo
-  dias_semana=dia not in finde
+  es_finde=dia in DIAS_FINDE # Si es sabado o domingo
+  dias_semana=dia not in DIAS_FINDE
   no_marcacion=pd.isna(f["Marc-Ent"]) # si el marc-ent
 
-  if findes and no_marcacion:
+  if es_finde and no_marcacion:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[2])
   elif dias_semana and no_marcacion:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[1])

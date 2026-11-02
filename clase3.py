@@ -18,12 +18,11 @@ for i,f in archivo.head(15).iterrows():
   no_marcacion=pd.isna(f["Marc-Ent"]) # si el marc-ent
 
   if finde and no_marcacion:
-    print("No va al reporte")
+    print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[2])
   elif f["Calendario"] and no_marcacion:
-    print("Falto en dia habil")
+    print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[1])
   else:
-    print(f)
-    print(len(f))
+    print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[0])
 
 
 # Nº              20416601101

@@ -20,7 +20,7 @@ for i,f in archivo.head(30).iterrows():
   dias_semana=dia not in finde
   no_marcacion=pd.isna(f["Marc-Ent"]) # si el marc-ent
 
-  if finde and no_marcacion:
+  if findes and no_marcacion:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[2])
   elif dias_semana and no_marcacion:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[1])

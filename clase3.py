@@ -13,7 +13,7 @@ archivo=pd.read_excel("Registro_Horario.xls", engine="calamine")
 dias=("SÁBADO", "DOMINGO")
 etiqueta=("TRABAJO", "FALTA", "SALTEAR")
 
-for i,f in archivo.head(15).iterrows():
+for i,f in archivo.head(30).iterrows():
   finde=f["Calendario"] in dias # Si es sabado o domingo
   dias_semana=f["Calendario"] not in dias
   #print(dias_semana)
@@ -21,7 +21,7 @@ for i,f in archivo.head(15).iterrows():
 
   if finde and no_marcacion:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[2])
-  elif f["Calendario"] and dias_semana:
+  elif dias_semana and no_marcacion:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[1])
   else:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[0])

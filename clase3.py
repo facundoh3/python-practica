@@ -1,11 +1,8 @@
 import pandas as pd
 archivo=pd.read_excel("Registro_Horario.xls", engine="calamine")
 # print("forma", archivo.shape)
-# print()
 # print("columnas", list(archivo.columns))
-# print()
 # print("primeras filas", archivo.head())
-# print()
 # print("linea seleccionada", archivo.iloc[865])
 
 DIAS_FINDE=("SÁBADO", "DOMINGO")
@@ -13,9 +10,6 @@ etiqueta=("TRABAJO", "FALTA", "SALTEAR")
 def normalizador(cadena):
   resultado=cadena.strip().upper()
   return resultado
-
-# Bueno hay que crear un diccionario vacio y adentro del for sumar cada
-# empleado
 
 empleados={}
 
@@ -29,12 +23,10 @@ for i,f in archivo.head(30).iterrows():
 
   if clave not in empleados:
     empleados[clave]=[]
-  else:
-    print("ya esta repetido")
 
-  empleados[clave].append(f["Fecha"])
-  empleados[clave].append(f["Marc-Ent"])
-  empleados[clave].append(f["Marc-Sal"])
+  #fecha entrada salida
+  dia={ "fecha": f["Fecha"], "Entrada":f["Marc-Ent"], "Salida": f["Marc-Sal"] }
+  empleados[clave].append(dia)
 
   if es_finde and no_marcacion:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[2])

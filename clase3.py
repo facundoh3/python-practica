@@ -18,8 +18,6 @@ def normalizador(cadena):
 # empleado
 
 empleados={}
-empleados["Nombre"]=[]
-empleados["Num-emp"]=[]
 
 for i,f in archivo.head(30).iterrows():
   dia=normalizador(f["Calendario"])
@@ -29,12 +27,14 @@ for i,f in archivo.head(30).iterrows():
 
   clave=(f["Nombre"],f["Nº"])
 
-  if clave[0] is not empleados["Nombre"]:
-    empleados["Nombre"].append(clave[0])
-    empleados["Num-emp"].append(clave[1])
+  if clave not in empleados:
+    empleados[clave]=[]
   else:
     print("ya esta repetido")
 
+  empleados[clave].append(f["Fecha"])
+  empleados[clave].append(f["Marc-Ent"])
+  empleados[clave].append(f["Marc-Sal"])
 
   if es_finde and no_marcacion:
     print(f["Nombre"], f["Fecha"], f["Calendario"], etiqueta[2])

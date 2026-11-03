@@ -25,18 +25,18 @@ for i,f in archivo.head(30).iterrows():
     empleados[clave]=[]
 
   #fecha entrada salida
-
+  dia_empleado={ "fecha": f["Fecha"],"dia":f["Calendario"], "Entrada":f["Marc-Ent"], "Salida": f["Marc-Sal"] }
   if es_finde and no_marcacion:
-      dia_empleado={ "fecha": f["Fecha"], "Entrada":f["Marc-Ent"], "Salida": f["Marc-Sal"], "Etiqueta": etiqueta[2] }
-      empleados[clave].append(dia_empleado)
+    #dia_etiqueta=etiqueta[2]
+    dia_empleado.update({"Etiqueta":etiqueta[2]})
   elif dias_semana and no_marcacion:
-    dia_empleado={ "fecha": f["Fecha"], "Entrada":f["Marc-Ent"], "Salida": f["Marc-Sal"], "Etiqueta": etiqueta[2] }
-    empleados[clave].append(dia_empleado)
+    #dia_etiqueta=[1]
+    dia_empleado.update({"Etiqueta":etiqueta[1]})
   else:
-    dia_empleado={ "fecha": f["Fecha"], "Entrada":f["Marc-Ent"], "Salida": f["Marc-Sal"], "Etiqueta": etiqueta[2] }
-    empleados[clave].append(dia_empleado)
-
-
+    #dia_etiqueta=etiqueta[0]
+    dia_empleado.update({"Etiqueta":etiqueta[0]})
+  empleados[clave].append(dia_empleado)
+  #dia_empleado={ "fecha": f["Fecha"],"dia":f["Calendario"], "Entrada":f["Marc-Ent"], "Salida": f["Marc-Sal"],"Etiqueta":dia_etiqueta }
 print(empleados)
 # Nº              20416601101
 # Nombre        ALVAREZ RENZO

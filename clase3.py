@@ -1,4 +1,5 @@
 import pandas as pd
+from fpdf import FPDF
 archivo=pd.read_excel("Registro_Horario.xls", engine="calamine")
 # print("forma", archivo.shape)
 # print("columnas", list(archivo.columns))
@@ -20,7 +21,6 @@ for i,f in archivo.head(30).iterrows():
   no_marcacion=pd.isna(f["Marc-Ent"]) # si el marc-ent
 
   clave=(f["Nombre"],f["Nº"])
-
   if clave not in empleados:
     empleados[clave]=[]
 
@@ -33,7 +33,16 @@ for i,f in archivo.head(30).iterrows():
     dia_empleado["Etiqueta"]=etiqueta[0]
 
   empleados[clave].append(dia_empleado)
-print(empleados)
+#print(empleados)
+
+
+
+pdf=FPDF()
+pdf.add_page()
+pdf.set_font("Helvetica",size=16)
+pdf.cell(text="HOLA MAMAHUEVO")
+pdf.output("prueba.pdf")
+
 # Nº              20416601101
 # Nombre        ALVAREZ RENZO
 # Fecha            15/10/2026
